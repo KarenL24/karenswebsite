@@ -1,0 +1,341 @@
+
+@font-face { font-family: orangetypewriter; src: url('assets/orange_typewriter/Orange Typewriter.ttf'); }
+
+:root {
+    /* ===== EDIT DIMENSIONS HERE ===== */
+    --env-width: 700px;
+    
+    --thisis-width: 32%;
+    --thisis-top: 30%;
+    --thisis-left: 7%;
+    
+    --gotmail-width: 45%;
+    --gotmail-top: 19%;
+    --gotmail-left: 14%;
+    
+    --karenface-width: 40%;
+    --karenface-top: 28%;
+    --karenface-left: 29%;
+    
+    --karentext-width: 120%;
+    --karentext-top: 24%;
+    --karentext-left: 0%;
+    
+    --lintext-width: 55%;
+    --lintext-top: 50%;
+    --lintext-left: 60%;
+    /* ================================= */
+}
+
+body {
+    /* Ensure 'white-paper-texture.jpg' is in the same folder */
+    background-image: url('assets/white-paper-texture.jpg');
+    
+    /* Fallback for preview if local image is missing */
+    background-color: #fdfbf7; 
+    
+    /* Background settings */
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    min-height: 100vh;
+    margin: 0;
+
+    /* Center the content vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.env-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--env-width);
+    min-width: 300px;
+    max-width: 90vw;
+    overflow: visible;
+    z-index: 1;
+}
+
+/* Envelope Styling */
+.envelope-img {
+    width: 100%;
+    height: auto;
+    /* Shadow and rotation to give it depth on the paper */
+    transform: rotate(-3deg);
+    transition: transform 0.3s ease;
+    filter: grayscale(100%);
+    transform-origin: 50% 50%;
+}
+
+.env-container:hover .envelope-img {
+    transform: rotate(0deg) scale(1.02);
+    cursor: pointer;
+}
+.thisis {
+  position: absolute;
+  top: var(--thisis-top);
+  left: var(--thisis-left);
+  width: var(--thisis-width);
+  z-index: 20;
+}
+
+.gotmail{
+  position: absolute;
+  top: var(--gotmail-top);
+  left: var(--gotmail-left);
+  width: var(--gotmail-width);
+  z-index: 20;
+  transform: rotate(-4deg);
+}
+
+.karenface {
+  position: absolute;
+  width: var(--karenface-width);
+  top: var(--karenface-top);
+  left: var(--karenface-left);
+  z-index: 10;
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+}
+
+.env-container:hover .karenface {
+  transform: rotate(0deg);
+}
+
+.karentext {
+  position: absolute;
+  top: var(--karentext-top);
+  left: var(--karentext-left);
+  z-index: 1;
+  width: var(--karentext-width);
+  opacity: 0.8;
+  box-sizing: border-box;
+}
+
+.lintext {
+  position: absolute;
+  top: var(--lintext-top);
+  width: var(--lintext-width);
+  left: var(--lintext-left);
+  z-index: 20;
+  height: auto;
+  opacity: 0.8;
+  box-sizing: border-box;
+}
+
+.karenname,
+.linname {
+    position: absolute;
+    stroke: #F998D7;
+    stroke-width: 1;
+    
+    left: 50%;
+    transform: translateX(-50%);
+
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 5s linear forwards;
+}
+.linname {
+    height: 100px;
+    top: 260px
+    
+}
+.karenname {
+    height: 100px;
+    top: 150px
+}
+
+.uni{
+  position: absolute;
+  font-family: orangetypewriter;
+  z-index: 20;
+  top: 75%;
+  left: 10%;
+  transform: rotate(-3deg);
+  transition: transform 0.3s ease;
+  font-size: clamp(0.75rem, 2vw, 1.2rem);
+}
+
+.env-container:hover .uni {
+  transform: rotate(0deg) scale(1.04);
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+svg {
+ 
+  #stroke {
+    .karendraw {
+      stroke-dasharray: 3000;
+      stroke-dashoffset: 3000;
+      stroke-width:17;
+      animation: bombshell 3.6s ease-in-out forwards 0.5s;
+
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+    }
+  }
+
+}
+
+
+@keyframes bombshell {
+	0% {
+		stroke-dashoffset: 3000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+		stroke-width:18;
+	}
+}
+
+/* Responsive - scales everything proportionally */
+@media (max-width: 968px) {
+    :root {
+        --scale: 0.9;
+    }
+    
+    .content-wrapper {
+        padding: 2rem;
+    }
+    
+    .env-container { 
+        width: calc(var(--env-width) * var(--scale));
+        max-width: 90vw;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    /* All elements now use percentages - they scale automatically with container */
+    .thisis { top: var(--thisis-top); left: var(--thisis-left); width: var(--thisis-width); }
+    .gotmail { top: var(--gotmail-top); left: var(--gotmail-left); width: var(--gotmail-width); }
+    .karenface { width: var(--karenface-width); top: var(--karenface-top); left: var(--karenface-left); }
+    .karentext { top: var(--karentext-top); left: var(--karentext-left); width: var(--karentext-width); }
+    .lintext { top: var(--lintext-top); width: var(--lintext-width); left: var(--lintext-left); }
+    .uni { font-size: clamp(0.7rem, 1.8vw, 1.1rem); }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --scale: 0.8;
+    }
+    
+    body { padding: 1rem; }
+    .content-wrapper { padding: 1rem; }
+    .env-container { 
+        width: calc(var(--env-width) * var(--scale));
+        max-width: 85vw;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    /* All elements now use percentages - they scale automatically with container */
+    .thisis { top: var(--thisis-top); left: var(--thisis-left); width: var(--thisis-width); }
+    .gotmail { top: var(--gotmail-top); left: var(--gotmail-left); width: var(--gotmail-width); }
+    .karenface { width: var(--karenface-width); top: var(--karenface-top); left: var(--karenface-left); }
+    .karentext { top: var(--karentext-top); left: var(--karentext-left); width: var(--karentext-width); }
+    .lintext { top: var(--lintext-top); width: var(--lintext-width); left: var(--lintext-left); }
+    .uni { font-size: clamp(0.65rem, 1.6vw, 1rem); }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --scale: 0.65;
+    }
+    
+    body {
+        overflow-x: hidden;
+        padding: 0.5rem;
+    }
+    
+    .content-wrapper {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .env-container { 
+        width: calc(var(--env-width) * var(--scale));
+        max-width: 90vw;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    /* All elements now use percentages - they scale automatically with container */
+    .thisis { 
+        top: var(--thisis-top); 
+        left: var(--thisis-left); 
+        width: var(--thisis-width); 
+    }
+    
+    .gotmail { 
+        top: var(--gotmail-top); 
+        left: var(--gotmail-left); 
+        width: var(--gotmail-width); 
+    }
+    
+    .karenface { 
+        width: var(--karenface-width); 
+        top: var(--karenface-top); 
+        left: var(--karenface-left); 
+    }
+    
+    .karentext { 
+        top: var(--karentext-top); 
+        left: var(--karentext-left); 
+        width: var(--karentext-width); 
+    }
+    
+    .lintext { 
+        top: var(--lintext-top); 
+        width: var(--lintext-width); 
+        left: var(--lintext-left); 
+    }
+    
+    .uni { 
+        font-size: clamp(0.6rem, 1.4vw, 0.9rem); 
+    }
+}
+
+/* iPhone specific fixes */
+@media (max-width: 428px) {
+    :root {
+        --scale: 0.6;
+    }
+    
+    .env-container {
+        max-width: 95vw;
+        margin: 0 auto;
+    }
+    
+    .uni { 
+        font-size: clamp(0.55rem, 1.2vw, 0.8rem); 
+    }
+}
+
+/* Ensure images scale properly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Override general img rule for karentext */
+.karentext {
+    max-width: none !important;
+}
+
